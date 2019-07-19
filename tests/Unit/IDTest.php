@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 
-class UserTest extends TestCase
+class IDTest extends TestCase
 {
     /**
      * A basic unit test example.
@@ -16,9 +16,9 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
-        //$user = User::find(1);
+
         $user = User::inRandomOrder()->first();
-        $this->assertInstanceOf('App\User',$user);
+        $this->assertIsInt($user->id);
 
     }
 }
