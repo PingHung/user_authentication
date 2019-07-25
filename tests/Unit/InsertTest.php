@@ -19,7 +19,7 @@ class InsertTest extends TestCase
         //$user = User::find(1);
 
 
-        $user = factory(\App\User::class)->make([
+        $user = factory(\App\User::class)->create([
             'name' => 'test',
             'email' => 'test@gmail.com',
             'email_verified_at' => now(),
