@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
+use Faker\Generator as Faker;
 
 class InsertTest extends TestCase
 {
@@ -16,16 +17,18 @@ class InsertTest extends TestCase
      */
     public function testExample()
     {
-        //$user = User::find(1);
 
+        $OriginalCount=User::count();
+        factory(\App\User::class, 1)->create() ;
 
-        $user = factory(\App\User::class)->create([
-            'name' => 'test',
+        $this->assertEquals($OriginalCount+1,User::count());
+
+        /*factory(\App\User::class)->create([
+            'name' => $faker->name,
             'email' => 'test@gmail.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
-
-        $this->assertDatabaseHas('users', ['name' => 'test']);
+        $this->assertDatabaseHas('users', ['name' => 'test']);*/
     }
 }
